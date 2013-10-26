@@ -1,7 +1,7 @@
 import pygame
 
 BOULDER_IMAGE = pygame.image.load("img/Boulder.png")
-PIT_IMAGE = pygame.image.load("img/pit.png").convert().subsurface(128,32,32,32)
+PIT_IMAGE = pygame.image.load("img/Tiles Set.png")
 GRASS_IMAGE = pygame.image.load("img/Grass.png")
 
 class Boulder:
@@ -15,7 +15,7 @@ class Boulder:
         return None
 
     def draw(self,screen):
-        screen.blit(self.image,self.x,self.y)
+        screen.blit(self.image,(self.x,self.y))
 
 class Grass:
     def __init__(self,x,y,options):
@@ -28,17 +28,17 @@ class Grass:
         return None
 
     def draw(self,screen):
-        screen.blit(self.image,self.x,self.y)
+        screen.blit(self.image,(self.x,self.y))
 
 class Pit:
     def __init__(self,x,y,options):
         self.x = x
         self.y = y
         self.obj_type = "pit"
-        self.image = PIT_IMAGE
+        self.image = PIT_IMAGE.convert().subsurface(128,32,32,32)
 
     def update(self):
         return None
 
     def draw(self,screen):
-        screen.blit(self.image,self.x,self.y)
+        screen.blit(self.image,(self.x,self.y))

@@ -3,7 +3,7 @@ from pygame.locals import *
 
 global game_engine
 
-player_image = pygame.image.load( "cat.png" )
+player_image = pygame.image.load( "img/bulbasaur.png" )
 BLOCK_PIXELS = 32 #filler variable for the pixels of each square
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
