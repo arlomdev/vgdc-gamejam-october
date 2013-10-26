@@ -9,9 +9,9 @@ def lookout_ai(self):
                 y = self.y + i
             else:
                 y = self.y - i
-            if game_engine.tilemap[self.x][y] or collision.checkPos(self.x,y,"grass"):
+            if game_engine.tilemap[self.x][y] or collision.checkByType(self.x,y,"grass"):
                 break
-            if collision.checkPos(self.x,y,"player"):
+            if collision.checkByType(self.x,y,"player"):
                 #game over buddy
     if player.y == self.y:
         dx = player.x - self.x
@@ -20,9 +20,9 @@ def lookout_ai(self):
                 x = self.x + i
             else:
                 x = self.x - i
-            if game_engine.tilemap[x][self.y] or collision.checkPos(x,self.y,"grass"):
+            if game_engine.tilemap[x][self.y] or collision.checkByType(x,self.y,"grass"):
                 break
-            if collision.checkPos(x,self.y,"player"):
+            if collision.checkByType(x,self.y,"player"):
                 #game over buddy
 
 def pacer_ai(self):
