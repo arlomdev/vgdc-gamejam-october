@@ -27,6 +27,7 @@ from Player import Player
 #from enemy import Enemy
 import collisions
 from Maps import Maps
+from other_types import Boulder, Grass, Pit
 
 game_engine = None
 
@@ -43,7 +44,11 @@ class GameEngine():
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((640,480))
-        self.typeList = {'player': Player,'enemy': ''} #FILL IN THE BLANKS WITH PLAYER/ENEMY OBJECTS
+        self.typeList = {'player': Player,
+                         'grass': Grass,
+                         'boulder': Boulder,
+                         'pit': Pit
+                        } #FILL IN THE BLANKS WITH PLAYER/ENEMY OBJECTS
         self.objectList = {} #TAKES TYPE AND ID
         self.mapfile = Maps("maps/testlevel.json")
         self.tilemap = self.mapfile.get_tilemap()
@@ -58,7 +63,7 @@ class GameEngine():
 
     def draw(self):
         self.screen.fill((0,0,0))
-        self.mapfile.draw(self.screen)
+        #self.mapfile.draw(self.screen)
         for objType in self.objectList:
             for obj in self.objectList[objType]:
                 self.objectList[objType][obj].draw(self.screen)
