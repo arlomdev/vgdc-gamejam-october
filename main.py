@@ -44,6 +44,11 @@ class GameEngine():
         self.screen = pygame.display.set_mode((640,480))
         self.typeList = {'player': Player,'enemy': ''} #FILL IN THE BLANKS WITH PLAYER/ENEMY OBJECTS
         self.objectList = {} #TAKES TYPE AND ID
+        self.mapfile = Map("maps/testlevel.json")
+        self.tilemap = self.mapfile.get_tilemap()
+        for obj in self.mapfile.get_objectlist():
+           obj_type,x,y,options = obj
+           self.addObject(obj_type,x,y,options)
     
     def update(self):
         for objType in self.objectList:
@@ -78,6 +83,3 @@ def main():
         game_engine.draw()
 
 if __name__ == '__main__': main()
-    
-    
-    
