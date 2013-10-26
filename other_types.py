@@ -1,3 +1,5 @@
+import pygame
+
 BOULDER_IMAGE = pygame.load("img/Boulder.png")
 PIT_IMAGE = pygame.load("img/pit.png").subsurface(128,32,32,32)
 GRASS_IMAGE = pygame.load("img/Grass.png")
