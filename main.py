@@ -54,7 +54,6 @@ class GameEngine():
 
     def draw(self):
         self.screen.fill((0,0,0))
-        for i,
         for objType in self.objectList:
             for obj in self.objectList[objType]:
                 self.objectList[objType][obj].draw(self.screen)
