@@ -38,7 +38,7 @@ class Maps:
 # get the list of containers (objects)
 def get_objlist():
   obj_list = []
-  for layer in self.data['layers']
+  for layer in self.data['layers']:
     if (layer['type'] == "tilelayer"):
       continue
     else:

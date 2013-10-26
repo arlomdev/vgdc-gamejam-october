@@ -26,6 +26,7 @@ from pygame.locals import *
 from Player import Player
 #from enemy import Enemy
 import collisions
+from Maps import Map
 
 game_engine = None
 
