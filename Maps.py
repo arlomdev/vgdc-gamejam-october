@@ -8,12 +8,12 @@ pixelh = 32
 
 class Maps:
 
-  def __init__(Filename):
+  def __init__(self, Filename):
     json_input = open(Filename).read()
     self.data = json.loads(json_input)
 
   # store tile data into map_lo
-  def get_tilemap():
+  def get_tilemap(self):
     height = self.data['layers'][0]['height']
     width = self.data['layers'][0]['width']
     map_lo = [[0 for j in range(height)] for i in range(width)]
@@ -36,7 +36,7 @@ class Maps:
     return map_lo
 
   # get the list of containers (objects)
-  def get_objlist():
+  def get_objlist(self):
     obj_list = []
     for layer in self.data['layers']:
       if (layer['type'] == "tilelayer"):
