@@ -36,6 +36,7 @@ class Maps:
           row[tile] = 0
     return map_lo
 
+
   # get the list of containers (objects)
   def get_objectlist(self):
     obj_list = []
@@ -51,21 +52,21 @@ class Maps:
 
   # Draws background
   def draw(self, screen):
-    wallRect = ( 0, 0, pixelw, pixelh)
-    floorRect = ( 96, 32, pixelw, pixelh)
+    floorRect = ( 0, 0, pixelw, pixelh)
+    wallRect = ( 96, 32, pixelw, pixelh)
     wallImg = (self.img).subsurface(wallRect)
     floorImg = (self.img).subsurface(floorRect)
-    wallMap = self.get_tileMap()
+    wallMap = self.get_tilemap()
     tile_table = []
     for tile_x in range(len(wallMap)):
       line = []
       tile_table.append(line)
-    for tile_y in range(len(wallMap[0])):
-      # fill w/ wall or floor
-      if (wallMap[tile_x][tile_y] == 0):
-        line.append(floorImg)
-      else:
-        line.append(wallImg)
+      for tile_y in range(len(wallMap[0])):
+        # fill w/ wall or floor
+        if (wallMap[tile_x][tile_y] == 0):
+          line.append(floorImg)
+        else:
+          line.append(wallImg)
     # draw on screen
     for x, row in enumerate(tile_table):
       for y, tile in enumerate(row):
