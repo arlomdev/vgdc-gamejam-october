@@ -11,6 +11,7 @@ class Maps:
   def __init__(self, Filename):
     json_input = open(Filename).read()
     self.data = json.loads(json_input)
+    self.img = pygame.image.load("img/Tiles Set.png").convert()
 
   # store tile data into map_lo
   def get_tilemap(self):
@@ -48,21 +49,27 @@ class Maps:
     return obj_list
 
 
-# populates 2d arr with surfaces
-#def load_tile_table(wallMap, wallFile, floorFile):
-#  wallImage = pygame.image.load(wallFile).convert()
-#  floorImage = pygame.image.load(floorFile).convert()
-#  tile_table = []
-#  for tile_x in range(len(wallMap)):
-#    line = []
-#    tile_table.append(line)
-#    for tile_y in range(len(wallMap[0])):
-#      # fill w/ wall or floor
-#      if (wallMap[tile_x][tile_y] == 0):
-#        line.append(floorImage)
-#      else:
-#        line.append(wallImage)
-#  return tile_table
+  # Draws background
+  def draw(self, screen):
+    wallRect = ( 0, 0, pixelw, pixelh)
+    floorRect = ( 96, 32, pixelw, pixelh)
+    wallImg = (self.img).subsurface(wallRect)
+    floorImg = (self.img).subsurface(floorRect)
+    wallMap = self.get_tileMap()
+    tile_table = []
+    for tile_x in range(len(wallMap)):
+      line = []
+      tile_table.append(line)
+    for tile_y in range(len(wallMap[0])):
+      # fill w/ wall or floor
+      if (wallMap[tile_x][tile_y] == 0):
+        line.append(floorImg)
+      else:
+        line.append(wallImg)
+    # draw on screen
+    for x, row in enumerate(tile_table):
+      for y, tile in enumerate(row):
+        screen.blit(tile, (x*32, y*32))
 
 # test functions with main
 #if __name__=='__main__':
