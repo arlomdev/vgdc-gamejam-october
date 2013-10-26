@@ -1,8 +1,8 @@
 import pygame
 
-BOULDER_IMAGE = pygame.load("img/Boulder.png")
-PIT_IMAGE = pygame.load("img/pit.png").subsurface(128,32,32,32)
-GRASS_IMAGE = pygame.load("img/Grass.png")
+BOULDER_IMAGE = pygame.image.load("img/Boulder.png")
+PIT_IMAGE = pygame.image.load("img/pit.png").convert().subsurface(128,32,32,32)
+GRASS_IMAGE = pygame.image.load("img/Grass.png")
 
 class Boulder:
     def __init__(self,x,y,options):
