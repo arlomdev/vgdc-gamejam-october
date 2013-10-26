@@ -33,7 +33,7 @@ class Maps:
           row[tile] = 1
         else:
           row[tile] = 0
-     return map_lo
+    return map_lo
 
   # get the list of containers (objects)
   def get_objlist():
