@@ -1,1 +1,14 @@
 import pygame
+
+#load tile map
+
+#generate ID
+# use a id_counter to make sure each id is unique
+
+#GameEngine Class
+
+# update
+# for all the objects in the game call their update function
+
+# draw
+# for all the objects in the game call their draw function
