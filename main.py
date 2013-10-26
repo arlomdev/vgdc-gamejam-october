@@ -25,7 +25,7 @@ import pygame
 from pygame.locals import *
 from Player import player
 from enemy import Enemy
-import collisions.*
+import collisions
 
 game_engine = None;
 
