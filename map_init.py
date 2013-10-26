@@ -5,7 +5,7 @@ import json
 json_input = open("maps/introLevel.json").read()
 
 data = json.loads(json_input)
-# print data['layers'][0]['data']
+# test print data['layers'][0]['data']
 
 height = data['layers'][0]['height']
 width= data['layers'][0]['width']
