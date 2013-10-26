@@ -26,7 +26,7 @@ from pygame.locals import *
 from Player import Player
 #from enemy import Enemy
 import collisions
-from Maps import Map
+from Maps import Maps
 
 game_engine = None
 
@@ -45,7 +45,7 @@ class GameEngine():
         self.screen = pygame.display.set_mode((640,480))
         self.typeList = {'player': Player,'enemy': ''} #FILL IN THE BLANKS WITH PLAYER/ENEMY OBJECTS
         self.objectList = {} #TAKES TYPE AND ID
-        self.mapfile = Map("maps/testlevel.json")
+        self.mapfile = Maps("maps/testlevel.json")
         self.tilemap = self.mapfile.get_tilemap()
         for obj in self.mapfile.get_objectlist():
            obj_type,x,y,options = obj
