@@ -85,4 +85,5 @@ while ( True ):
        #  global pressed
         # pressed = event.key
         # player.update()
-        # pygame.display.update()"""
+        # pygame.display.update()
+"""
