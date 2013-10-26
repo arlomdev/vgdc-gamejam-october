@@ -12,3 +12,7 @@ import pygame
 
 # draw
 # for all the objects in the game call their draw function
+
+# GameObject
+# Template object for creating objects
+# needs an up
