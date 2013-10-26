@@ -25,27 +25,27 @@ class Maps:
         m += width
       n += 1
       m = 0
-  # replace map_lo w/ 1's and 0's
-  wall = map_lo[0][0]
-  for row in map_lo:
-    for tile in range(len(row)):
-      if (row[tile] == wall):
-        row[tile] = 1
-      else:
-        row[tile] = 0
-  return map_lo
+    # replace map_lo w/ 1's and 0's
+    wall = map_lo[0][0]
+    for row in map_lo:
+      for tile in range(len(row)):
+        if (row[tile] == wall):
+          row[tile] = 1
+        else:
+          row[tile] = 0
+     return map_lo
 
-# get the list of containers (objects)
-def get_objlist():
-  obj_list = []
-  for layer in self.data['layers']
-    if (layer['type'] == "tilelayer"):
-      continue
-    else:
-      name = layer['name']
-      for obj in layer['objects']:
-        obj_list.append((name, obj['x'], obj['y'], obj['properties']))
-  return obj_list
+  # get the list of containers (objects)
+  def get_objlist():
+    obj_list = []
+    for layer in self.data['layers']:
+      if (layer['type'] == "tilelayer"):
+        continue
+      else:
+        name = layer['name']
+        for obj in layer['objects']:
+          obj_list.append((name, obj['x'], obj['y'], obj['properties']))
+    return obj_list
 
 
 # populates 2d arr with surfaces
