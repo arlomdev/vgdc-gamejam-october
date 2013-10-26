@@ -36,7 +36,7 @@ class Maps:
     return map_lo
 
   # get the list of containers (objects)
-  def get_objlist(self):
+  def get_objectlist(self):
     obj_list = []
     for layer in self.data['layers']:
       if (layer['type'] == "tilelayer"):

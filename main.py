@@ -50,7 +50,7 @@ class GameEngine():
         for obj in self.mapfile.get_objectlist():
            obj_type,x,y,options = obj
            self.addObject(obj_type,x,y,options)
-    
+
     def update(self):
         for objType in self.objectList:
             for obj in self.objectList[objType]:
@@ -65,21 +65,21 @@ class GameEngine():
 ###############################################################################
     def addObject(self,objType, x, y, optionList):
         new_id = generate_id()
-        
+
         if objType not in self.objectList:
             self.objectList[objType] = {}
-        
+
         self.objectList[objType][new_id] = self.typeList[objType](x,y,optionList)
 ###############################################################################
-  
+
 def main():
     game_engine = GameEngine()
-    game_engine.addObject("player",100,100,{})
+    # game_engine.addObject("player",100,100,{})
     while 1:
         for event in pygame.event.get():
             if event.type == QUIT:
                 return
-                
+
         game_engine.update()
         game_engine.draw()
 
