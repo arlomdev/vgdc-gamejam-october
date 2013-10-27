@@ -1,5 +1,6 @@
 import pygame, sys
 from pygame.locals import *
+import math
 
 global game_engine
 
@@ -19,18 +20,20 @@ class Player:
       self.health = 10 #Health at 10, might change
       
    def draw(self,screen):
-      screen.blit( self.image, ( self.x, self.y ) ) 
+      screen.blit( self.image, ( self.x*32, self.y*32 ) ) 
 
-   def update(self):
+   def update(self,game):
+      tile_x = int(self.x)
+      tile_y = int(self.y)
       keys = pygame.key.get_pressed()
-      if ( keys[K_LEFT] ):
-         self.move( -BLOCK_PIXELS, 0 )
-      elif ( keys[K_RIGHT] ):
-         self.move( BLOCK_PIXELS, 0 )
-      elif ( keys[K_DOWN] ):
-         self.move( 0, BLOCK_PIXELS )
-      elif ( keys[K_UP] ):
-         self.move( 0, -BLOCK_PIXELS )
+      if ( keys[K_LEFT] ) and not game.tilemap[tile_x-1][tile_y]:
+         self.move( -1, 0 )
+      elif ( keys[K_RIGHT] ) and not game.tilemap[tile_x+1][tile_y]:
+         self.move( 1, 0 )
+      elif ( keys[K_DOWN] ) and not game.tilemap[tile_x][tile_y+1]:
+         self.move( 0, 1 )
+      elif ( keys[K_UP] ) and not game.tilemap[tile_x][tile_y-1]:
+         self.move( 0, -1 )
 
       
    def move( self, xDelta, yDelta ):

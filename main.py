@@ -28,6 +28,7 @@ from Player import Player
 import collisions
 from Maps import Maps
 from other_types import Boulder, Grass, Pit
+import math
 
 game_engine = None
 
@@ -54,12 +55,13 @@ class GameEngine():
         self.tilemap = self.mapfile.get_tilemap()
         for obj in self.mapfile.get_objectlist():
            obj_type,x,y,options = obj
-           self.addObject(obj_type,x,y,options)
+           self.addObject(obj_type,math.floor(x/32),math.floor(y/32),options)
+        pygame.key.set_repeat()
 
     def update(self):
         for objType in self.objectList:
             for obj in self.objectList[objType]:
-                self.objectList[objType][obj].update()
+                self.objectList[objType][obj].update(self)
 
     def draw(self):
         self.screen.fill((0,0,0))
