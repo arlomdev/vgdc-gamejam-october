@@ -29,6 +29,7 @@ import collisions
 from Maps import Maps
 from other_types import Boulder, Grass, Pit
 import math
+import keys
 
 game_engine = None
 
@@ -45,20 +46,21 @@ class GameEngine():
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((640,480))
+        pygame.key.set_repeat(1,0)
         self.typeList = {'player': Player,
                          'grass': Grass,
                          'boulder': Boulder,
                          'pit': Pit
                         } #FILL IN THE BLANKS WITH PLAYER/ENEMY OBJECTS
         self.objectList = {} #TAKES TYPE AND ID
-        self.mapfile = Maps("maps/testlevel.json")
+        self.mapfile = Maps("maps/testLevel.json")
         self.tilemap = self.mapfile.get_tilemap()
         for obj in self.mapfile.get_objectlist():
            obj_type,x,y,options = obj
            self.addObject(obj_type,math.floor(x/32),math.floor(y/32),options)
-        pygame.key.set_repeat()
 
     def update(self):
+        keys.update()
         for objType in self.objectList:
             for obj in self.objectList[objType]:
                 self.objectList[objType][obj].update(self)
@@ -87,7 +89,8 @@ def main():
         for event in pygame.event.get():
             if event.type == QUIT:
                 return
-
+            #else:
+            #    keys.update(event)
         game_engine.update()
         game_engine.draw()
 

@@ -1,10 +1,11 @@
 import pygame, sys
 from pygame.locals import *
 import math
+import keys
 
 global game_engine
 
-player_image = pygame.image.load( "img/bulbasaur.png" )
+player_image = pygame.image.load( "img/Bulbasaur.png" )
 BLOCK_PIXELS = 32 #filler variable for the pixels of each square
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -25,14 +26,14 @@ class Player:
    def update(self,game):
       tile_x = int(self.x)
       tile_y = int(self.y)
-      keys = pygame.key.get_pressed()
-      if ( keys[K_LEFT] ) and not game.tilemap[tile_x-1][tile_y]:
+      #keys = pygame.key.get_pressed()
+      if ( keys.press(K_LEFT) ) and not game.tilemap[tile_x-1][tile_y]:
          self.move( -1, 0 )
-      elif ( keys[K_RIGHT] ) and not game.tilemap[tile_x+1][tile_y]:
+      elif ( keys.press(K_RIGHT) ) and not game.tilemap[tile_x+1][tile_y]:
          self.move( 1, 0 )
-      elif ( keys[K_DOWN] ) and not game.tilemap[tile_x][tile_y+1]:
+      elif ( keys.press(K_DOWN) ) and not game.tilemap[tile_x][tile_y+1]:
          self.move( 0, 1 )
-      elif ( keys[K_UP] ) and not game.tilemap[tile_x][tile_y-1]:
+      elif ( keys.press(K_UP) ) and not game.tilemap[tile_x][tile_y-1]:
          self.move( 0, -1 )
 
       
