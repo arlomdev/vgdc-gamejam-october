@@ -3,8 +3,6 @@ from pygame.locals import *
 import math
 import keys
 
-global game_engine
-
 player_image = pygame.image.load( "img/Bulbasaur.png" )
 BLOCK_PIXELS = 32 #filler variable for the pixels of each square
 SCREEN_WIDTH = 640
@@ -26,8 +24,7 @@ class Player:
    def update(self,game):
       tile_x = int(self.x)
       tile_y = int(self.y)
-      #keys = pygame.key.get_pressed()
-      if ( keys.press(K_LEFT) ) and not game.tilemap[tile_x-1][tile_y]:
+      if ( keys.press(K_LEFT) ) and not game.tilemap[self.x-1][tile_y]:
          self.move( -1, 0 )
       elif ( keys.press(K_RIGHT) ) and not game.tilemap[tile_x+1][tile_y]:
          self.move( 1, 0 )
@@ -41,9 +38,12 @@ class Player:
       new1 = self.x + self.image.get_width()
       new2 = self.y + self.image.get_height()
       """Check if moving will move out of bounds of the screen"""
-      if ( new1 + xDelta < SCREEN_WIDTH and new1 + 
-         xDelta > 0 and new2 + yDelta < SCREEN_HEIGHT and
-         new2 + yDelta > 0 ):
+      can_move = True
+      can_move = can_move and (new1 + xDelta < SCREEN_WIDTH)
+      can_move = can_move and (new1 + xDelta > 0)
+      can_move = can_move and (new2 + yDelta < SCREEN_HEIGHT)
+      can_move = can_move and (new2 + yDelta > 0 )
+      if can_move:
          self.x += xDelta
          self.y += yDelta
 

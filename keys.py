@@ -37,6 +37,5 @@ def repeated(key_code):
     return (crnt and prev)
 
 def press(key_code):
-    print(key_code, check(key_code))
     crnt, prev = check(key_code) 
     return (crnt and (not prev))

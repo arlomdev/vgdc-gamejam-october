@@ -51,13 +51,13 @@ class GameEngine():
                          'grass': Grass,
                          'boulder': Boulder,
                          'pit': Pit
-                        } #FILL IN THE BLANKS WITH PLAYER/ENEMY OBJECTS
+                        } 
         self.objectList = {} #TAKES TYPE AND ID
         self.mapfile = Maps("maps/testLevel.json")
         self.tilemap = self.mapfile.get_tilemap()
         for obj in self.mapfile.get_objectlist():
            obj_type,x,y,options = obj
-           self.addObject(obj_type,math.floor(x/32),math.floor(y/32),options)
+           self.addObject(obj_type,int(x/32),int(y/32),options)
 
     def update(self):
         keys.update()
