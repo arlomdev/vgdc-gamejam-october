@@ -23,10 +23,10 @@
 ###############################################################################
 import pygame
 from pygame.locals import *
-from Player import Player
+from player import Player
 #from enemy import Enemy
 import collisions
-from Maps import Maps
+from maps import Maps
 from other_types import Boulder, Grass, Pit
 import math
 import keys
