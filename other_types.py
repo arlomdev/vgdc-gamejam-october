@@ -11,7 +11,7 @@ class Boulder:
         self.obj_type = "boulder"
         self.image = BOULDER_IMAGE
 
-    def update(self,game):
+    def update(self):
         return None
 
     def draw(self,screen):
@@ -24,7 +24,7 @@ class Grass:
         self.obj_type = "grass"
         self.image = GRASS_IMAGE
 
-    def update(self,game):
+    def update(self):
         return None
 
     def draw(self,screen):
@@ -37,7 +37,7 @@ class Pit:
         self.obj_type = "pit"
         self.image = PIT_IMAGE.convert().subsurface(128,32,32,32)
 
-    def update(self,game):
+    def update(self):
         return None
 
     def draw(self,screen):

@@ -2,6 +2,8 @@ import pygame, sys
 from pygame.locals import *
 import math
 import keys
+import game_engine
+import collisions
 
 player_image = pygame.image.load( "img/Bulbasaur.png" )
 BLOCK_PIXELS = 32 #filler variable for the pixels of each square
@@ -21,31 +23,30 @@ class Player:
    def draw(self,screen):
       screen.blit( self.image, ( self.x*32, self.y*32 ) ) 
 
-   def update(self,game):
-      tile_x = int(self.x)
-      tile_y = int(self.y)
-      if ( keys.press(K_LEFT) ) and not game.tilemap[self.x-1][tile_y]:
+   def update(self):
+      if ( keys.press(K_LEFT) ):
          self.move( -1, 0 )
-      elif ( keys.press(K_RIGHT) ) and not game.tilemap[tile_x+1][tile_y]:
+      elif ( keys.press(K_RIGHT) ):
          self.move( 1, 0 )
-      elif ( keys.press(K_DOWN) ) and not game.tilemap[tile_x][tile_y+1]:
+      elif ( keys.press(K_DOWN) ):
          self.move( 0, 1 )
-      elif ( keys.press(K_UP) ) and not game.tilemap[tile_x][tile_y-1]:
+      elif ( keys.press(K_UP) ):
          self.move( 0, -1 )
 
       
-   def move( self, xDelta, yDelta ):
+   def move( self, dx, dy ):
       new1 = self.x + self.image.get_width()
       new2 = self.y + self.image.get_height()
       """Check if moving will move out of bounds of the screen"""
-      can_move = True
-      can_move = can_move and (new1 + xDelta < SCREEN_WIDTH)
-      can_move = can_move and (new1 + xDelta > 0)
-      can_move = can_move and (new2 + yDelta < SCREEN_HEIGHT)
-      can_move = can_move and (new2 + yDelta > 0 )
+      can_move = (new1 + dx < SCREEN_WIDTH) \
+             and (new1 + dx > 0) \
+             and (new2 + dy < SCREEN_HEIGHT) \
+             and (new2 + dy > 0 ) \
+             and (not game_engine.tilemap[self.x + dx][self.y + dy]) \
+             and (not collisions.checkByType(self.x + dx, self.y + dy, "boulder"))
       if can_move:
-         self.x += xDelta
-         self.y += yDelta
+         self.x += dx
+         self.y += dy
 
 """
 #Using main.py to test instead
