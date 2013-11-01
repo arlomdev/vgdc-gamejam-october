@@ -32,6 +32,8 @@ class Player:
          self.move( 0, 1 )
       elif ( keys.press(K_UP) ):
          self.move( 0, -1 )
+      if collisions.checkByType(self.x,self.y,"pit"):
+         quit()
 
       
    def move( self, dx, dy ):

@@ -27,7 +27,7 @@ import game_engine
 
 def main():
     game_engine.init()
-    game_engine.loadMap("maps/testLevel.json")
+    game_engine.loadMap("maps/level2.json")
     while 1:
         for event in pygame.event.get():
             if event.type == QUIT:
