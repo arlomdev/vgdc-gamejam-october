@@ -60,7 +60,7 @@ def loadMap(filename):
     tilemap = mapfile.get_tilemap()
     for obj in mapfile.get_objectlist():
        obj_type,x,y,options = obj
-       addObject(obj_type,int(x/32),int(y/32),options)
+       addObject(obj_type,int(x/32),int(y/32)-1,options)
 
 def init():
     global screen
